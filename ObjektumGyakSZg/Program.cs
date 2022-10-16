@@ -9,9 +9,72 @@ public class ObjektumGyak{
         //vegrehajtArgFeladatok1(args);
         //vegrehajtArgFeladatok2(args);
         //vegrehajtArgFeladatok3(args);
-        vegrehajtArgFeladatok4(args);
+        //vegrehajtArgFeladatok4(args);
+        //szamtaniSorozat(args);
+        //mertaniSorozat(args);
+        fibonacciSorozat(args);
     }
 
+    static void fibonacciSorozat(string[] args)
+    {
+        Console.WriteLine("A Fibonacci sorozat:");
+        if (args.Length != 1)
+        {
+            Console.WriteLine("Nem megfelelő az argumentumok száma!");
+            return;
+        }
+        int[] tomb = new int[int.Parse(args[0])];
+        int i;
+        tomb[0] = 1;
+        tomb[1] = 1;
+        for (i = 2; i < tomb.Length; i++)
+        {
+            tomb[i] = tomb[i-2] + tomb[i-1];
+        }
+        Console.WriteLine("A sorozat n.-ik tagjának értéke: " + tomb[tomb.Length-1]);
+    }
+
+    static void szamtaniSorozat(string[] args)
+    {
+        Console.WriteLine("A számtani sorozat:");
+        if(args.Length != 3)
+        {
+            Console.WriteLine("Nem megfelelő az argumentumok száma!");
+            return;
+        }
+        int elsoElem = int.Parse(args[0]), differencial = int.Parse(args[1]), i;
+        int[] tomb = new int[int.Parse(args[2])];
+        tomb[0] = elsoElem;
+        for(i = 1; i < tomb.Length; i++)
+        {
+            tomb[i] = tomb[i - 1] + differencial;
+        }
+        for(i = 0; i < tomb.Length; i++)
+        {
+            Console.Write(tomb[i] + " ");
+        }
+    }
+
+    static void mertaniSorozat(string[] args)
+    {
+        Console.WriteLine("A mértani sorozat:");
+        if (args.Length != 3)
+        {
+            Console.WriteLine("Nem megfelelő az argumentumok száma!");
+            return;
+        }
+        int elsoElem = int.Parse(args[0]), hanyados = int.Parse(args[1]), i;
+        int[] tomb = new int[int.Parse(args[2])];
+        tomb[0] = elsoElem;
+        for (i = 1; i < tomb.Length; i++)
+        {
+            tomb[i] = tomb[i - 1] * hanyados;
+        }
+        for (i = 0; i < tomb.Length; i++)
+        {
+            Console.Write(tomb[i] + " ");
+        }
+    }
     static void vegrehajtArgFeladatok4(string[] args)
     {
         if (args.Length != 2)
