@@ -12,14 +12,29 @@ public class ObjektumGyak{
         }
         else
         {
-            int min = int.MaxValue;
+            int min = int.MaxValue, pozitivMin = int.MaxValue, negativMax = int.MinValue;
+            int max = int.MinValue;
+            int szam, ossz = 0;
             for(int i = 0; i< args.Length; i++)
             {
-                if(min > int.Parse(args[i]))
-                    min = int.Parse(args[i]);
+                szam = int.Parse(args[i]);
+                if(min > szam)
+                    min = szam;
+                if (pozitivMin > szam && szam >= 0)
+                    pozitivMin = szam;
+                if (max < szam)
+                    max = szam;
+                if(negativMax < szam && szam < 0)
+                    negativMax = szam;
+
+                ossz += szam;
             }
             Console.WriteLine($"A legkisebb szám: {min}");
-
+            Console.WriteLine($"A legnagyobb szám: {max}");
+            Console.WriteLine($"A számok összege: {ossz}");
+            Console.WriteLine($"A számok átlaga: {ossz / args.Length}");
+            Console.WriteLine($"A legkisebb pozitiv szám: {pozitivMin}");
+            Console.WriteLine($"A legnagyobb negatív szám: {negativMax}");
         }
 
         /*
