@@ -7,9 +7,42 @@ public class ObjektumGyak{
     public static void Main(string[] args)
     {
         //vegrehajtArgFeladatok1(args);
-        vegrehajtArgFeladatok2(args);
-        
+        //vegrehajtArgFeladatok2(args);
+        //vegrehajtArgFeladatok3(args);
+        vegrehajtArgFeladatok4(args);
     }
+
+    static void vegrehajtArgFeladatok4(string[] args)
+    {
+        if (args.Length != 2)
+        {
+            Console.WriteLine("Két argumentumnak kell lennie");
+            return;
+        }
+        int x, y;
+        if (!int.TryParse(args[0], out x) || !int.TryParse(args[1],out y))
+        {
+            Console.WriteLine("Az első vagy második argumentum nem megfelelő típusú");
+            return ;
+        }
+        for (int i = x; i < y; i++)
+            Console.Write(i + " ");
+    }
+
+    static void vegrehajtArgFeladatok3(string[] args)
+    {
+        int paratlanSzamokOsszege = 0, parosSzamokOsszege = 0;
+        for(int i = 0; i < args.Length; i++)
+        {
+            int szam = int.Parse(args[i]);
+            if (szam % 2 == 0)
+                parosSzamokOsszege += szam;
+            else
+                paratlanSzamokOsszege += szam;
+        }
+        Console.WriteLine($"A {(parosSzamokOsszege > paratlanSzamokOsszege ? "páros" : "páratlan")} számok összege a nagyobb");
+    }
+
     static void vegrehajtArgFeladatok2(string[] args)
     {
         int szam, osszesPozitiv=0, osszesNegativ = 0, osszesNulla = 0;
