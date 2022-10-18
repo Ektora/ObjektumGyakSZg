@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ObjektumGyakSZg
+﻿namespace ObjektumGyakSZg
 {
     internal class Macska
     {
@@ -50,7 +44,7 @@ súlya csökkenjen 0.1-el, és ha nem volt éhes,
 
         public override string ToString()
         {
-            return $"A macska súlya {Math.Round(this.suly,2)} kg és{(this.ehese ? "" : " nem")} éhes.";
+            return $"A macska súlya {Math.Round(this.suly, 2)} kg és{(this.ehese ? "" : " nem")} éhes.";
         }
 
     }

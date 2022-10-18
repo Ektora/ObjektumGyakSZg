@@ -1,8 +1,8 @@
 ﻿
 using ObjektumGyakSZg;
-using System.Numerics;
 
-public class ObjektumGyak{
+public class ObjektumGyak
+{
 
     public static void Main(string[] args)
     {
@@ -12,7 +12,54 @@ public class ObjektumGyak{
         //vegrehajtArgFeladatok4(args);
         //szamtaniSorozat(args);
         //mertaniSorozat(args);
-        fibonacciSorozat(args);
+        //fibonacciSorozat(args);
+        //szovegHossz(args);
+        haromszogVizsgalat(args);
+    }
+
+    static void haromszogVizsgalat(string[] args)
+    {
+        if (args.Length != 3)
+        {
+            Console.WriteLine("Nem megfelelő az argumentumok száma!");
+            return;
+        }
+        int a = int.Parse(args[0]), b = int.Parse(args[1]), c = int.Parse(args[2]);
+        if(!(a < b + c && b < a + c && c < a + b))
+        {
+            Console.WriteLine("A megadott hosszakból nem lehet háromszöget készíteni");
+            return;
+        }
+        double s, terulet;
+        s = (a + b + c)/2.0;
+        terulet = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+        Console.WriteLine($"Az a:{a} b:{b} c:{c} oldalú háromszög területe: {terulet} kerülete: {a+b+c} {s} ");
+    }
+
+    static void szovegHossz(string[] args)
+    {
+        if (args.Length < 1)
+        {
+            Console.WriteLine("Nem megfelelő az argumentumok száma!");
+            return;
+        }
+        int i,maxHossz = 0;
+        for(i = 0; i< args.Length; i++)
+        {
+            if(maxHossz < args[i].Length)
+                maxHossz = args[i].Length;
+        }
+        int[] hosszak = new int[maxHossz+1];
+
+        for(i= 0; i< args.Length; i++)
+        {
+            hosszak[args[i].Length]++;
+        }
+        foreach (int item in hosszak)
+        {
+            Console.Write($"{item} ");
+        }
+
     }
 
     static void fibonacciSorozat(string[] args)
@@ -29,15 +76,15 @@ public class ObjektumGyak{
         tomb[1] = 1;
         for (i = 2; i < tomb.Length; i++)
         {
-            tomb[i] = tomb[i-2] + tomb[i-1];
+            tomb[i] = tomb[i - 2] + tomb[i - 1];
         }
-        Console.WriteLine("A sorozat n.-ik tagjának értéke: " + tomb[tomb.Length-1]);
+        Console.WriteLine("A sorozat n.-ik tagjának értéke: " + tomb[tomb.Length - 1]);
     }
 
     static void szamtaniSorozat(string[] args)
     {
         Console.WriteLine("A számtani sorozat:");
-        if(args.Length != 3)
+        if (args.Length != 3)
         {
             Console.WriteLine("Nem megfelelő az argumentumok száma!");
             return;
@@ -45,11 +92,11 @@ public class ObjektumGyak{
         int elsoElem = int.Parse(args[0]), differencial = int.Parse(args[1]), i;
         int[] tomb = new int[int.Parse(args[2])];
         tomb[0] = elsoElem;
-        for(i = 1; i < tomb.Length; i++)
+        for (i = 1; i < tomb.Length; i++)
         {
             tomb[i] = tomb[i - 1] + differencial;
         }
-        for(i = 0; i < tomb.Length; i++)
+        for (i = 0; i < tomb.Length; i++)
         {
             Console.Write(tomb[i] + " ");
         }
@@ -83,10 +130,10 @@ public class ObjektumGyak{
             return;
         }
         int x, y;
-        if (!int.TryParse(args[0], out x) || !int.TryParse(args[1],out y))
+        if (!int.TryParse(args[0], out x) || !int.TryParse(args[1], out y))
         {
             Console.WriteLine("Az első vagy második argumentum nem megfelelő típusú");
-            return ;
+            return;
         }
         for (int i = x; i < y; i++)
             Console.Write(i + " ");
@@ -95,7 +142,7 @@ public class ObjektumGyak{
     static void vegrehajtArgFeladatok3(string[] args)
     {
         int paratlanSzamokOsszege = 0, parosSzamokOsszege = 0;
-        for(int i = 0; i < args.Length; i++)
+        for (int i = 0; i < args.Length; i++)
         {
             int szam = int.Parse(args[i]);
             if (szam % 2 == 0)
@@ -108,12 +155,12 @@ public class ObjektumGyak{
 
     static void vegrehajtArgFeladatok2(string[] args)
     {
-        int szam, osszesPozitiv=0, osszesNegativ = 0, osszesNulla = 0;
+        int szam, osszesPozitiv = 0, osszesNegativ = 0, osszesNulla = 0;
         if (args.Length == 0)
             Console.WriteLine("Nincs bemeneti argumentum");
         else
         {
-            for(int i = 0; i < args.Length; i++)
+            for (int i = 0; i < args.Length; i++)
             {
                 szam = int.Parse(args[i]);
                 if (szam > 0)

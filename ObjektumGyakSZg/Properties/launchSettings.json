@@ -2,7 +2,7 @@
   "profiles": {
     "ObjektumGyakSZg": {
       "commandName": "Project",
-      "commandLineArgs": "30"
+      "commandLineArgs": "15 25 17"
     }
   }
 }

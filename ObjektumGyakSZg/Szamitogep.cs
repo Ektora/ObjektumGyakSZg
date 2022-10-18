@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ObjektumGyakSZg
+﻿namespace ObjektumGyakSZg
 {
     internal class Szamitogep
     {
@@ -17,7 +11,7 @@ namespace ObjektumGyakSZg
             this.beKapcsolt = beKapcsolt;
         }
 
-        public Szamitogep() : this(1024,false)
+        public Szamitogep() : this(1024, false)
         {
 
         }
