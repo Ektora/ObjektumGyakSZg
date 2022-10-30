@@ -1,6 +1,7 @@
 ﻿
 using ObjektumGyakSZg;
-
+using System.Diagnostics;
+using System.Linq;
 public class ObjektumGyak
 {
 
@@ -14,9 +15,35 @@ public class ObjektumGyak
         //mertaniSorozat(args);
         //fibonacciSorozat(args);
         //szovegHossz(args);
-        haromszogVizsgalat(args);
+        //haromszogVizsgalat(args);
+        kockaDobas(args);
+
     }
 
+    static void kockaDobas(string[] args)
+    {
+        if(args.Length == 0) { 
+            Console.WriteLine("Nincs bemenet");
+            return;
+        }
+        var tomb = new int[6];
+        Random random = new Random();
+        Stopwatch sw = new Stopwatch();
+        int n = Convert.ToInt32(args[0]);
+        sw.Start();
+        for (int i = 0; i<n; i++)
+        {
+            int szam = random.Next(1, 7);
+            tomb[szam - 1]++;
+        }
+        for (int i = 0; i < tomb.Length; i++)
+        {
+            Console.WriteLine($"A {i+1} számot átlagosan {(tomb[i]/(double)n*100):0.00}% alkalommal dobtuk");
+        }
+        Console.WriteLine($"A futási ideje a fornak {sw.ElapsedMilliseconds} ms-ben");
+    }
+
+    #region 1-15 feladat
     static void haromszogVizsgalat(string[] args)
     {
         if (args.Length != 3)
@@ -207,7 +234,9 @@ public class ObjektumGyak
             Console.WriteLine($"A legkisebb pozitiv szám: {pozitivMin}");
             Console.WriteLine($"A legnagyobb negatív szám: {negativMax}");
         }
+
     }
+    #endregion
 
     static void vegrehajtMacska()
     {
@@ -235,4 +264,6 @@ public class ObjektumGyak
         Console.WriteLine(szg1);
         Console.WriteLine(szg2);
     }
+
+
 }
