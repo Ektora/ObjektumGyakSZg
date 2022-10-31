@@ -2,6 +2,8 @@
 using ObjektumGyakSZg;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+
 public class ObjektumGyak
 {
 
@@ -16,13 +18,270 @@ public class ObjektumGyak
         //fibonacciSorozat(args);
         //szovegHossz(args);
         //haromszogVizsgalat(args);
-        kockaDobas(args);
+        //kockaDobas(args);
+        //csokkenoVagyNovekvo(args);
+        //rendelesek(args);
+        //kerulet(args);
+        //leghosszabbSzo(args);
+        //szamologep(args);
+        //szamologepBovitett(args);
+        //jancsiEsJuliska(args);
+        //dinnye(args);
+        //haromszogek(args);
+        reklam(args);
+    }
 
+    static void reklam(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        for (int i = 0; i < Convert.ToInt32(args[2]); i++)
+        {
+            Console.Write(((i + 1) % 5) != 0 ? $"{args[0]}\n" : $"{args[1]}\n"); 
+        }
+    }
+
+    static void haromszogek(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        int n = Convert.ToInt32(args[0]), kerulet=0, legnagyobbKerulet=0, sorszam = 0, szamlalo =1;
+        for (int i = 1; i < n * 3 + 1; i = i+3)
+        {
+            kerulet = Convert.ToInt32(args[i]) + Convert.ToInt32(args[i+1]) + Convert.ToInt32(args[i+2]);
+            if (legnagyobbKerulet < kerulet)
+            {
+                legnagyobbKerulet = kerulet;
+                sorszam = szamlalo;
+            }
+            szamlalo++;
+        }
+        Console.WriteLine("A legnagyobb kerületű háromszög sorszáma: " + sorszam);
+    }
+
+    static void dinnye(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        int rohadtDinnye = args.Where(m => (Convert.ToInt32(m) % 3 == 0 && Convert.ToInt32(m) % 2 == 0)).Count();
+        Console.WriteLine("A rohadt dinnyék száma: " + rohadtDinnye);
+    }
+
+    static void jancsiEsJuliska(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        int n = Convert.ToInt32(args[0]);
+        int[] tomb = new int[n];
+        tomb[0] = 3;
+        tomb[1] = 2;
+        for (int i = 2; i < n; i++)
+        {
+            tomb[i] = tomb[i - 1] + tomb[i - 2];
+        }
+        Console.WriteLine("Az utolsó kereszteződésben lévő morzsák száma: " + tomb[n-1]);
+    }
+
+    static void szamologepBovitett(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        int n = Convert.ToInt32(args[0]);
+        int eredmeny = Convert.ToInt32(args[1]);
+        int i = 0;
+        while (i < n)
+        {
+            int szam = Convert.ToInt32(args[(3+i*2)]);
+            switch (args[(2+i*2)])
+            {
+                case "+":
+                    {
+                        eredmeny += szam;
+                        break;
+                    }
+                case "-":
+                    {
+                        eredmeny -= szam;
+                        break;
+                    }
+                case "*":
+                    {
+                        eredmeny *= szam;
+                        break;
+                    }
+                case "/":
+                    {
+                        eredmeny /= szam;
+                        break;
+                    }
+
+            }
+            i++;
+        }
+        Console.WriteLine($"A művelet eredménye: {eredmeny}");
+    }
+    static void szamologep(string[] args)
+    {
+        if (args.Length != 3)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        double a = Convert.ToDouble(args[0]), b = Convert.ToDouble(args[2]),c=0;
+        switch (args[1])
+        {
+            case "+":
+                {
+                    c = a + b;
+                    break;
+                }
+            case "-":
+                {
+                    c = a - b;
+                    break;
+                }
+            case "*":
+                {
+                    c = a * b;
+                    break;
+                }
+            case "/":
+                {
+                    c = a / b;
+                    break;
+                }
+
+        }
+        Console.WriteLine($"{a} {args[1]} {b} = {c}");
+    }
+
+    static void leghosszabbSzo(string[] args)
+    {
+        if (args.Length == 0)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum");
+            return;
+        }
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        string leghosszabbSzo = args.OrderByDescending(s => s.Length).First();
+        Console.WriteLine("A leghosszabb szó: " + leghosszabbSzo + " a lekérdezés ideje: " + stopwatch.ElapsedMilliseconds);
+        stopwatch.Restart();
+        int length = 0;
+        string eredmeny = "";
+        foreach (string str in args)
+        {
+            if (length < str.Length)
+            {
+                length = str.Length;
+                eredmeny = str;
+            }
+        }
+        Console.WriteLine("A leghosszabb szó: " + eredmeny + " a lekérdezés ideje: " + stopwatch.ElapsedMilliseconds);
+    }
+
+    static void kerulet(string[] args)
+    {
+        if (args.Length != 2)
+        {
+            Console.WriteLine("Nem megfelelő számú argumentum!");
+            return;
+        }
+        int n = Convert.ToInt32(args[0]), hossz = Convert.ToInt32(args[1]), kerulet = 0;
+        for (int i = 0; i < n; i++)
+        {
+            kerulet += hossz;
+        }
+        Console.WriteLine("A sokszög kerülete: " + kerulet);
+    }
+
+    static void rendelesek(string[] args)
+    {
+        if (args.Length < 1)
+        {
+            Console.WriteLine("Nincs megfelelő számú bemenet");
+            return;
+        }
+        int rendelesOsszege = 0;
+        int[] tomb = args.Select(elem => Convert.ToInt32(elem)).ToArray<int>();
+        foreach (int item in tomb)
+        {
+            switch (item)
+            {
+                case 1:
+                    {
+                        rendelesOsszege += 1000;
+                        break;
+                    }
+                case 2:
+                    {
+                        rendelesOsszege += 5000;
+                        break;
+                    }
+                case 3:
+                    {
+                        rendelesOsszege += 7000;
+                        break;
+                    }
+                case 4:
+                    {
+                        rendelesOsszege += 9000;
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Nem megfelelő sorszám!");
+                        break;
+                    }
+            }
+        }
+        Console.WriteLine("A rendelés összege: " + rendelesOsszege);
+    }
+
+    static void csokkenoVagyNovekvo(string[] args)
+    {
+        if (args.Length < 2)
+        {
+            Console.WriteLine("Az argumentumok száma kevés");
+            return;
+        }
+        bool novekvo = true, csokkeno = true;
+        int szam = Convert.ToInt32(args[0]);
+        for (int i = 1; i < args.Length; i++)
+        {
+            if (szam < Convert.ToInt32(args[i]))
+                csokkeno = false;
+            else if (szam > Convert.ToInt32(args[i]))
+                novekvo = false;
+            else
+            {
+                csokkeno = false;
+                novekvo = false;
+                break;
+            }
+        }
+        Console.WriteLine($"Az argumentumok {(novekvo ? "növekvő sorban vannak" : csokkeno ? "csökkenő sorban vannak" : "nincsenek sorban")}");
     }
 
     static void kockaDobas(string[] args)
     {
-        if(args.Length == 0) { 
+        if (args.Length == 0)
+        {
             Console.WriteLine("Nincs bemenet");
             return;
         }
@@ -31,14 +290,14 @@ public class ObjektumGyak
         Stopwatch sw = new Stopwatch();
         int n = Convert.ToInt32(args[0]);
         sw.Start();
-        for (int i = 0; i<n; i++)
+        for (int i = 0; i < n; i++)
         {
             int szam = random.Next(1, 7);
             tomb[szam - 1]++;
         }
         for (int i = 0; i < tomb.Length; i++)
         {
-            Console.WriteLine($"A {i+1} számot átlagosan {(tomb[i]/(double)n*100):0.00}% alkalommal dobtuk");
+            Console.WriteLine($"A {i + 1} számot átlagosan {(tomb[i] / (double)n * 100):0.00}% alkalommal dobtuk");
         }
         Console.WriteLine($"A futási ideje a fornak {sw.ElapsedMilliseconds} ms-ben");
     }
@@ -52,15 +311,15 @@ public class ObjektumGyak
             return;
         }
         int a = int.Parse(args[0]), b = int.Parse(args[1]), c = int.Parse(args[2]);
-        if(!(a < b + c && b < a + c && c < a + b))
+        if (!(a < b + c && b < a + c && c < a + b))
         {
             Console.WriteLine("A megadott hosszakból nem lehet háromszöget készíteni");
             return;
         }
         double s, terulet;
-        s = (a + b + c)/2.0;
+        s = (a + b + c) / 2.0;
         terulet = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
-        Console.WriteLine($"Az a:{a} b:{b} c:{c} oldalú háromszög területe: {terulet} kerülete: {a+b+c} {s} ");
+        Console.WriteLine($"Az a:{a} b:{b} c:{c} oldalú háromszög területe: {terulet} kerülete: {a + b + c} {s} ");
     }
 
     static void szovegHossz(string[] args)
@@ -70,15 +329,15 @@ public class ObjektumGyak
             Console.WriteLine("Nem megfelelő az argumentumok száma!");
             return;
         }
-        int i,maxHossz = 0;
-        for(i = 0; i< args.Length; i++)
+        int i, maxHossz = 0;
+        for (i = 0; i < args.Length; i++)
         {
-            if(maxHossz < args[i].Length)
+            if (maxHossz < args[i].Length)
                 maxHossz = args[i].Length;
         }
-        int[] hosszak = new int[maxHossz+1];
+        int[] hosszak = new int[maxHossz + 1];
 
-        for(i= 0; i< args.Length; i++)
+        for (i = 0; i < args.Length; i++)
         {
             hosszak[args[i].Length]++;
         }
