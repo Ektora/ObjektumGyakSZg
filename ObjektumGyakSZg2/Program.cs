@@ -21,6 +21,7 @@ namespace ObjektumGyakSZg2
             {
                 Console.Write(item + " ");
             }
+            //Online szerkesztett sor - vs online teszt
             Console.WriteLine();
             Console.WriteLine("A tömbben található elemek összege: " + ElemekOsszege(tomb));
             Console.WriteLine("A tömbben található elemek átlaga: {0:0.00}",ElemekAtlaga(tomb));
