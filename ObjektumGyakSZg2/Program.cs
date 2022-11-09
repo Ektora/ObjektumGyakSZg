@@ -6,7 +6,8 @@ namespace ObjektumGyakSZg2
     {
         static void Main(string[] args)
         {
-            ArgumentumFeldolgozas(args);
+            //ArgumentumFeldolgozas(args);
+            ArgumentumFeldolgozas2(args);
         }
 
         static void ArgumentumFeldolgozas(string[] args)
@@ -28,6 +29,42 @@ namespace ObjektumGyakSZg2
             Console.WriteLine($"A tömbben található legkisebb érték: {LegkisebbElem(tomb)} és a legnagyobb érték: {LegnagyobbElem(tomb)} - a két szám {(LegnagyobbOszthatoLegkisebbel(tomb) ? "" : "nem")} osztható egymással");
             Console.WriteLine($"A tömbben található {ParosSzamok(tomb)} db páros és {ParatlanSzamok(tomb)} db páratlan szám");
             Console.WriteLine($"A tömbben található {ParosVagyParatlanSzamok(tomb,true)} db páros és {ParosVagyParatlanSzamok(tomb, false)} db páratlan szám - {(ParosVagyParatlanSzamok(tomb, true) > ParosVagyParatlanSzamok(tomb, false) ? "páros" : "páratlan")} számból van több");
+        }
+
+            static void ArgumentumFeldolgozas2(string[] args)
+        {
+            if (args.Length >=2 )
+            {
+                Console.WriteLine("Nem megfelelő számú argumentum");
+                return;
+            }
+            int[] tomb = args.Skip(1).Select(elem => Convert.ToInt32(elem)).ToArray();
+            foreach (int item in tomb)
+            {
+                Console.Write(item + " ");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"A tömbben található elemek összege {Convert.ToInt32(args[0])} lépésközönként: {ElemekOsszegeLepeskozzel(Convert.ToInt32(args[0]), tomb)}");
+            }
+
+        public static int ParosElemekOsszegeLepeskozzel(int[] tomb, int lepeskoz){
+            osszeg1 = tomb.Where((ertek, index) => (index + lepeskoz) % lepeskoz ==0 && ertek % 2 == 0).Sum();
+            osszeg = 0;
+            for(int i = 0; i < tomb.Length; i = i + lepeskoz){
+                if(tomb[i] % 2 ==0)
+                    osszeg += tomb[i];
+            }
+            return osszeg;
+        }
+
+        public static int ElemekOsszegeLepeskozzel(int[] tomb, int lepeskoz){
+            osszeg1 = tomb.Where((_, index) => (index + lepeskoz) % lepeskoz ==0).Sum();
+            osszeg = 0;
+            for(int i = 0; i < tomb.Length; i = i + lepeskoz){
+                osszeg += tomb[i];
+            }
+            return osszeg;
         }
 
         public static int ElemekOsszege(int[] tomb)
