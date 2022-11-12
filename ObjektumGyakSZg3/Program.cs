@@ -19,6 +19,27 @@
             szamKiirasCsokkeno(Convert.ToInt32(args[0]));
             Console.WriteLine();
             Console.WriteLine(osszeadas(Convert.ToInt32(args[0])));
+            Console.WriteLine(faktorialis(Convert.ToInt32(args[0])));
+            Console.WriteLine(hatvany(Convert.ToInt32(args[0]), Convert.ToInt32(args[1])));
+
+        }
+
+        static int hatvany(int alap, int kitevo)
+        {
+            if(kitevo > 1)
+            {
+                return alap * hatvany(alap, kitevo-1);
+            }
+            return alap;
+        }
+
+        static int faktorialis(int n)
+        {
+            if (n > 1)
+            {
+                return n * faktorialis(n - 1);
+            }
+            return 1;
         }
 
         static int osszeadas(int n)
