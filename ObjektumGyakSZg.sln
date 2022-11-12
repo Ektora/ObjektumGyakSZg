@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjektumGyakSZg", "Objektum
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjektumGyakSZg2", "ObjektumGyakSZg2\ObjektumGyakSZg2.csproj", "{DCC27478-F2CE-4795-AFAF-1BB72FDF892E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestObjektumGyakSZg2", "TestObjektumGyakSZg2\TestObjektumGyakSZg2.csproj", "{1D7876EC-2811-4CFE-9A81-83CAF3607241}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestObjektumGyakSZg2", "TestObjektumGyakSZg2\TestObjektumGyakSZg2.csproj", "{1D7876EC-2811-4CFE-9A81-83CAF3607241}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjektumGyakSZg3", "ObjektumGyakSZg3\ObjektumGyakSZg3.csproj", "{A9F3DDD2-FA25-43A9-9B13-9562CE00DD67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1D7876EC-2811-4CFE-9A81-83CAF3607241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D7876EC-2811-4CFE-9A81-83CAF3607241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D7876EC-2811-4CFE-9A81-83CAF3607241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9F3DDD2-FA25-43A9-9B13-9562CE00DD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F3DDD2-FA25-43A9-9B13-9562CE00DD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F3DDD2-FA25-43A9-9B13-9562CE00DD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F3DDD2-FA25-43A9-9B13-9562CE00DD67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
