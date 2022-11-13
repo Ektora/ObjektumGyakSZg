@@ -6,7 +6,49 @@
         {
 
             //Macskak();
-            Szamitogepek();
+            //Szamitogepek();
+            //Hallgatok();
+            //Tortak();
+            //Emberek();
+            Harcosok();
+        }
+
+        static void Harcosok()
+        {
+            Harcos h1 = new Harcos("Ektora",50,12);
+            Harcos h2 = new Harcos("Feri", 34, 10);
+            while (!h1.Harcol(h2));
+            Console.WriteLine(h1);
+            Console.WriteLine(h2);
+        }
+
+        static void Emberek()
+        {
+            Ember e = new Ember("Gipsz", "Jakab", 1958);
+            Console.WriteLine(e.HogyHivjak());
+        }
+
+        static void Tortak()
+        {
+
+            Torta t1 = new Torta(4,true);
+            Torta t2 = new Torta();
+            Console.WriteLine($"A tortát {(t2.KremmelMegken()? "sikerült" : "nem sikerült")} megkenni");
+            Console.WriteLine($"A tortát {(t2.KremmelMegken() ? "sikerült" : "nem sikerült")} megkenni");
+            t1.UjEmelet();
+            Console.WriteLine(t1);
+            Console.WriteLine(t2);
+        }
+
+        static void Hallgatok()
+        {
+
+            Hallgato h1 = new Hallgato("MBVS7Z",2,24);
+            Hallgato h2 = new Hallgato("BTF3PF");
+            h1.TargyFelvesz(5);
+            Console.WriteLine($"A hallgató {(h1.Vizsgazik() ? "sikeres" : "sikertelen")} vizsgát tett");
+            Console.WriteLine(h1);
+            Console.WriteLine(h2);
         }
 
         static void Szamitogepek()
